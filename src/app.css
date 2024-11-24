@@ -8,6 +8,11 @@
     background-color: #020230;
     color: white;
 }
+
+.hidden {
+    display: none;
+}
+
 .main{
 width: 75%;  
 background: linear-gradient(to bottom,rgba(0,0,0,0),#020230), 
@@ -21,6 +26,8 @@ background: linear-gradient(to bottom,rgba(0,0,0,0),#020230),
 height: 50%;
 position: relative;
 }
+
+
 
 .timer{
     width: 70px;
@@ -274,6 +281,7 @@ border-radius: 5px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+    color:black;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Drop shadow effect */
   }
   
