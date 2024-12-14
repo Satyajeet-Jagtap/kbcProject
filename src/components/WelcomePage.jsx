@@ -69,7 +69,7 @@ export default function WelcomePage({ onSubmit }) {
         </div>
       )}
 
-      {/* {showVideo && (
+      {showVideo && (
         <div className="video-container">
           <video
             ref={videoRef}
@@ -80,7 +80,7 @@ export default function WelcomePage({ onSubmit }) {
             muted={false}
           />
         </div>
-      )} */}
+      )}
 
       {showBeginButton && (
         <div className="begin-container">

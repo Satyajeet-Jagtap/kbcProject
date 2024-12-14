@@ -89,15 +89,15 @@ position: relative;
 
 .answer:hover,
 .answer.active{
-    background: mediumblue;
+    background: rgb(1, 1, 95);
 }
 
 .answer.correct{
-    animation: correct 3s ease forwards;
+    animation: correct 8s ease forwards;
 }
 
 .answer.wrong{
-    animation: wrong 3s ease forwards;
+    animation: wrong 8s ease forwards;
 }
 
 @keyframes correct {
@@ -110,9 +110,6 @@ position: relative;
     }
 }
 
-.answer.wrong{
-    animation: wrong 3s ease forwards;
-}
 
 @keyframes wrong {
     0%,22%,42%{
