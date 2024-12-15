@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/kbcProject/static/css/main.dc4795a3.css",
+    "main.js": "/kbcProject/static/js/main.e78c50d6.js",
+    "static/js/885.887a0ab9.chunk.js": "/kbcProject/static/js/885.887a0ab9.chunk.js",
+    "static/media/videoTrimmed.mp4": "/kbcProject/static/media/videoTrimmed.7ffb28389f996a9e252b.mp4",
+    "static/media/1mintimer.mp3": "/kbcProject/static/media/1mintimer.6872e2c38ffce4421658.mp3",
+    "static/media/tikSound.mp3": "/kbcProject/static/media/tikSound.8504193ac2c8d2791ff6.mp3",
+    "static/media/phoneAFriend.mp3": "/kbcProject/static/media/phoneAFriend.ee716971227003f61e27.mp3",
+    "static/media/introMusic.mp3": "/kbcProject/static/media/introMusic.031d56b3160922e2dfae.mp3",
+    "static/media/audiencePoll.mp3": "/kbcProject/static/media/audiencePoll.bfeb9a34668d9de71968.mp3",
+    "static/media/bg.jpg": "/kbcProject/static/media/bg.c137ccd722d64133b4df.jpg",
+    "static/media/wrongAnswer.mp3": "/kbcProject/static/media/wrongAnswer.b83ecf40a8629bea6de7.mp3",
+    "static/media/CorrectAnswer.mp3": "/kbcProject/static/media/CorrectAnswer.f566a103d8e8eb5aa58b.mp3",
+    "static/media/opening.mp3": "/kbcProject/static/media/opening.8047bc45c858e8bfa3ac.mp3",
+    "index.html": "/kbcProject/index.html",
+    "main.dc4795a3.css.map": "/kbcProject/static/css/main.dc4795a3.css.map",
+    "main.e78c50d6.js.map": "/kbcProject/static/js/main.e78c50d6.js.map",
+    "885.887a0ab9.chunk.js.map": "/kbcProject/static/js/885.887a0ab9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc4795a3.css",
+    "static/js/main.e78c50d6.js"
+  ]
+}
