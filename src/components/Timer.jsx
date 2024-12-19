@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
-import tickSound from "../soundClips/tikSound.mp3";
-import openSound from "../soundClips/opening.mp3";
 import tikSound1min from "../soundClips/1mintimer.mp3";
+import openSound from "../soundClips/opening.mp3";
+import tickSound from "../soundClips/tikSound.mp3";
 
 export default function Timer({ handleSetStop, stopCount, questionNumber, pause }) {
     const [timer, setTimer] = useState(30);
@@ -25,7 +25,8 @@ export default function Timer({ handleSetStop, stopCount, questionNumber, pause 
 
     useEffect(() => {
         if (timer === 0) {
-            stopTickSound(); // Stop ticking sound when timer reaches 0
+            stopTickSound();
+            stop1MinTikSound(); // Stop ticking sound when timer reaches 0
             handleSetStop(); // Trigger the stop logic
         }
 
@@ -37,7 +38,8 @@ export default function Timer({ handleSetStop, stopCount, questionNumber, pause 
 
             return () => clearInterval(interval);
         } else {
-            stopTickSound(); // Stop ticking sound when timer is paused
+            stopTickSound();
+            stop1MinTikSound(); // Stop ticking sound when timer is paused
         }
     }, [timer, stopCount, stopTickSound,pause]);
 
