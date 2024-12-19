@@ -46,16 +46,17 @@ function App() {
 
   // Update earned amount when question number changes
   useEffect(() => {
-    if (questionNumber < 5) {
-      // setEarned(moneyPyramid.find((m) => m.id === questionNumber).amount);
-      setEarned("0");
-    }else if (questionNumber < 10){
-      setEarned("10,000");
-    }else if(questionNumber < 15){
-      setEarned("3,20,000");
-    }else{
-      setEarned("1,00,00,000");
-    }
+    setEarned(moneyPyramid.find((m) => m.id === questionNumber).amount);
+    // if (questionNumber < 5) {
+    //   // setEarned(moneyPyramid.find((m) => m.id === questionNumber).amount);
+    //   setEarned("0");
+    // }else if (questionNumber < 10){
+    //   setEarned("10,000");
+    // }else if(questionNumber < 15){
+    //   setEarned("3,20,000");
+    // }else{
+    //   setEarned("1,00,00,000");
+    // }
   }, [moneyPyramid, questionNumber]);
 
   // Manage timer when popup is open/closed
@@ -116,7 +117,7 @@ function App() {
       <div className="main">
         <div className="header">Welcome, {userName}!</div>
         {stop ? (
-          <h1 className="endText">You Won: ₹ {earned}</h1>
+          <h1 className="endText">You Won: {earned}</h1>
         ) : (
           <>
             <div className="top">
