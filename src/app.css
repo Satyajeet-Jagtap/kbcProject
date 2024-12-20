@@ -1,6 +1,10 @@
 *{
     margin: 0;
     padding: 0;
+    user-select: none; /* Standard property */
+  -webkit-user-select: none; /* For WebKit browsers like Chrome, Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none;
 }
 .app{
     height: 100vh;
