@@ -19,10 +19,10 @@ export default function LifeLinePopup(prop) {
   // Function to handle closing the popup
 
   useEffect(() => {
-    console.log(prop.audiencePoll,prop.fiftyfifty,prop.phoneAFriend);
+    // console.log(prop.audiencePoll,prop.fiftyfifty,prop.phoneAFriend);
     if (prop.isOpen) {
       setCorrectIndex(prop.data[prop.questionNumber].answer.findIndex((ans) => ans.correct));
-      console.log(prop.data[prop.questionNumber].answer[correctIndex]);
+      // console.log(prop.data[prop.questionNumber].answer[correctIndex]);
       setCorrectAnswer(prop.data?.[prop.questionNumber]?.answer?.[correctIndex]?.text || "No correct answer");
       setIsPopupOpen(true); // Open the popup
       handlePrepare();

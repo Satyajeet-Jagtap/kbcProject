@@ -7,7 +7,7 @@ import correctAnswer from "../soundClips/CorrectAnswer.mp3";
 
 export default function Trivia({
     data,
-    handleSetStop,
+    handleSetStopAfterWrongAnswer,
     questionNumber,
     setQuestionNumber,
     isFiftyLifeline,
@@ -23,6 +23,7 @@ export default function Trivia({
 
     useEffect(() => {
         setQuestion(data[questionNumber - 1]);
+        // console.log(`questiopn number is ${questionNumber-1} and question is ${question} and data[0] is ${JSON.stringify(data[0])}`);
         setHiddenAnswers([]); // Reset hidden answers when the question changes
     }, [data, questionNumber]);
 
@@ -64,13 +65,13 @@ export default function Trivia({
         delay(11000, () => {
             if (a.correct) {
                 setQuestionNumber((prev) => prev + 1);
-                console.log("selected question ");
+                // console.log("selected question ");
                 setSelectedAnswer(null);
                 setIsFiftyLifeline(false);
                 setPause(false); // Reset the lifeline
             } else {
                 setQuestionNumber((prev) => prev - 1);
-                handleSetStop();
+                handleSetStopAfterWrongAnswer();
             }
         });
     };  

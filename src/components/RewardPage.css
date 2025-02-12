@@ -1,0 +1,186 @@
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f531;
+  }
+  
+  /* Congratulations Text Styling */
+  .congratulations-text {
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem; /* Responsive font size */
+    margin: 20px 0; /* Adds spacing */
+    color: #4caf50;
+  }
+  
+  /* Main Container Styling */
+  .container2 {
+    top: 11rem;
+    left: 9rem;
+    width: 50vw;
+    height: 50vh;
+    background: linear-gradient(45deg, #ffffff, #e0f7fa); /* Subtle gradient */
+    border: 1px solid white;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Added for proper child positioning */
+    z-index: 10; /* Layer on top */
+    overflow: hidden;
+  }
+  
+  /* Confetti Container */
+  .confetti-container2 {
+    perspective: 700px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 15;
+  }
+  
+  /* Confetti Elements */
+  .confetti {
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    border-radius: 0%;
+    animation-timing-function: ease-in-out;
+  }
+  
+  .confetti--animation-slow {
+    animation: confetti-slow 2.25s linear forwards;
+  }
+  
+  .confetti--animation-medium {
+    animation: confetti-medium 1.75s linear forwards;
+  }
+  
+  .confetti--animation-fast {
+    animation: confetti-fast 1.25s linear forwards;
+  }
+  
+  /* Submit Button Styling */
+  .submit-btn {
+    height: 45px;
+    width: 200px;
+    font-size: 15px;
+    background-color: #00c09d;
+    border: 1px solid #00ab8c;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(87, 71, 81, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    margin-top: 20px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2ca893;
+    transition: all 0.2s ease-out;
+  }
+  
+  /* Checkmark Circle */
+  .checkmark-circle {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    display: inline-block;
+    margin: 20px auto;
+  }
+  
+  .checkmark-circle .background {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #00c09d;
+    position: absolute;
+  }
+  
+  .checkmark-circle .checkmark {
+    border-radius: 5px;
+  }
+  
+  .checkmark-circle .checkmark.draw:after {
+    animation-delay: 100ms;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-name: checkmark;
+    transform: scaleX(-1) rotate(135deg);
+    animation-fill-mode: forwards;
+  }
+  
+  .checkmark-circle .checkmark:after {
+    opacity: 1;
+    height: 75px;
+    width: 37.5px;
+    transform-origin: left top;
+    border-right: 15px solid white;
+    border-top: 15px solid white;
+    border-radius: 2.5px !important;
+    content: '';
+    left: 25px;
+    top: 75px;
+    position: absolute;
+  }
+  
+  /* Keyframes for Checkmark */
+  @keyframes checkmark {
+    0% {
+      height: 0;
+      width: 0;
+      opacity: 1;
+    }
+    20% {
+      height: 0;
+      width: 37.5px;
+      opacity: 1;
+    }
+    40% {
+      height: 75px;
+      width: 37.5px;
+      opacity: 1;
+    }
+    100% {
+      height: 75px;
+      width: 37.5px;
+      opacity: 1;
+    }
+  }
+  
+  /* Confetti Animations */
+  @keyframes confetti-slow {
+    0% {
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+    100% {
+      transform: translate3d(25px, 105vh, 0) rotateX(360deg) rotateY(180deg);
+    }
+  }
+  
+  @keyframes confetti-medium {
+    0% {
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+    100% {
+      transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+    }
+  }
+  
+  @keyframes confetti-fast {
+    0% {
+      transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+    100% {
+      transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+    }
+  }
+  

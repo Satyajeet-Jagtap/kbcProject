@@ -5,14 +5,39 @@ import "./WelcomePage.css";
 import introSound from "../soundClips/introMusic.mp3"; // Your sound file path
 import welcomeVideo from "../assets/videoTrimmed.mp4"; // Your video file path
 
-export default function WelcomePage({ onSubmit }) {
+export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestionsDone }) {
   const [name, setName] = useState("");
+  const [age, setAge] = useState();
+  const [category, setCategory] = useState(""); // Selected category
+  const [subCategory, setSubCategory] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showBeginButton, setShowBeginButton] = useState(false); // State for the "Let's Begin" button
   const videoRef = useRef(null); // Ref for the video element
 
   const [playIntro, { stop }] = useSound(introSound, { loop: true });
+  const categories = {
+    Technology: ["Artificial Intelligence", "Cybersecurity", "Gadgets", "Blockchain"],
+    Politics: ["Elections", "Policies", "International Relations"],
+    Programming: ["JavaScript", "Python", "Java", "C++", "Web Development"],
+    Science: ["Biology", "Physics", "Chemistry", "Astronomy"],
+    Mathematics: ["Algebra", "Geometry", "Calculus"],
+    Sports: ["Football", "Basketball", "Tennis", "Cricket"],
+    Entertainment: ["Movies", "TV Shows", "Music"],
+    Business: ["Economics", "Finance", "Marketing", "Startup"],
+    Health: ["Nutrition", "Mental Health", "Fitness"],
+    Travel: ["Destinations", "Adventure", "Budget Travel"],
+    Education: ["Online Learning", "Higher Education", "Skill Development"],
+    Gaming: ["PC Games", "Console Games", "Mobile Games", "Esports"],
+    Automobile: ["Electric Vehicles", "Sports Cars", "Motorcycles"],
+    History: ["Ancient Civilizations", "World Wars", "Historical Figures"],
+    Lifestyle: ["Fashion", "Home Decor", "Personal Development"],
+    Food_Cooking: ["Recipes", "Culinary Tips", "World Cuisines"],
+    Environment: ["Climate Change", "Sustainability", "Wildlife"],
+    Space_Astronomy: ["Space Exploration", "Astrophysics", "Cosmology"],
+    Philosophy: ["Ethics", "Metaphysics", "Political Philosophy"],
+    Artificial_Intelligence: ["Machine Learning", "Deep Learning", "AI Ethics"]
+};
 
   const handleGetStarted = () => {
     setShowPopup(true);
@@ -23,6 +48,8 @@ export default function WelcomePage({ onSubmit }) {
     if (name.trim()) {
       stop(); // Stop playing the sound once the name is submitted
       setShowPopup(false);
+      //call an api after start 
+      apiCallingDetails(category,subCategory);
       setShowVideo(true);
       setShowBeginButton(true); // Show the video after submitting the name
 
@@ -37,7 +64,12 @@ export default function WelcomePage({ onSubmit }) {
   };
 
   const handleBegin = () => {
-    onSubmit(name); // Transition to the next screen
+    onSubmit(name,age,category,subCategory); // Transition to the next screen
+  };
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+    setSubCategory(""); // Reset subcategory when category changes
   };
 
   return (
@@ -54,14 +86,44 @@ export default function WelcomePage({ onSubmit }) {
         <div className="welcome-overlay">
           <div className="welcome-popup">
             <h1>Welcome to KBC!</h1>
-            <p>Please enter your name to get started:</p>
+            <p>Please fill below details to get started</p>
             <input
+              required
               type="text"
               className="welcome-input"
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
+            {/* Category Dropdown */}
+      <select
+        required
+        className="welcome-input"
+        value={category}
+        onChange={handleCategoryChange}
+      >
+        <option value="" disabled hidden>Choose a Category</option>
+        {Object.keys(categories).map((cat, index) => (
+          <option key={index} value={cat}>{cat}</option>
+        ))}
+      </select>
+
+      {/* Subcategory Dropdown (Only shows when a category is selected) */}
+      {category && (
+        <select
+          className="welcome-input"
+          value={subCategory}
+          onChange={(e) => setSubCategory(e.target.value)}
+        >
+          <option value="" disabled hidden height="50px">Choose a Subcategory</option>
+          {categories[category].map((subCat, index) => (
+            <option key={index} value={subCat}>{subCat}</option>
+          ))}
+        </select>
+      )}
+
+
+
             <button className="welcome-button" onClick={handleSubmit}>
               Start
             </button>
@@ -84,8 +146,21 @@ export default function WelcomePage({ onSubmit }) {
 
       {showBeginButton && (
         <div className="begin-container">
-          <button className="begin-button" onClick={handleBegin}>
-            Let's Begin
+          <button
+            className="begin-button"
+            onClick={handleBegin}
+            disabled={!fetchQuestionsDone} // Disable button while loading
+          >
+            {!fetchQuestionsDone ? (
+              <>
+                <span className="loader"></span>
+                <br></br>
+                <br></br>
+                Preparing Questions...
+              </>
+            ) : (
+              "Let's Begin"
+            )}
           </button>
         </div>
       )}

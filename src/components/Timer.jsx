@@ -11,7 +11,7 @@ export default function Timer({ handleSetStop, stopCount, questionNumber, pause 
     const [startSound, { stop: stopStartSound }] = useSound(openSound, { volume: 0.7 });
     const [playTick, { stop: stopTickSound }] = useSound(tickSound, { volume: 0.7 });
     const [play1MinTick, { stop: stop1MinTikSound }] = useSound(tikSound1min, { volume: 0.7 });
-    console.log("Question no "+ questionNumber);
+    // console.log("Question no "+ questionNumber);
     useEffect(() => {
         // Play sounds when timer is reset
         if (timer === 30 && questionNumber <=5) {

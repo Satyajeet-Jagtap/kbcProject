@@ -19,6 +19,7 @@
 
 .main{
 width: 75%;  
+position: relative;
 background: linear-gradient(to bottom,rgba(0,0,0,0),#020230), 
     url("./assets/bg.jpg") center; 
     display: flex;
@@ -297,3 +298,21 @@ border-radius: 5px;
     font-size: 16px;
     color: #333;
   }
+
+  .loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
