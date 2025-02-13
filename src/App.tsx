@@ -66,8 +66,14 @@ function App() {
 
     // console.log("🌐 Fetching New Data from API...");
 
+    function decrypt(encryptedText) {
+      return atob(encryptedText);
+    }
+
+    const model = decrypt(Constants.model)
+
     const requestData = {
-      model: Constants.model,
+      model: model,
       messages: [
         {
           role: "user",
@@ -107,6 +113,7 @@ function App() {
 
 
   useEffect(() => {
+
     if (hasStopDuetoTime) {
       // console.log("hasStopDuetoTime triggered. Current question number:", questionNumber);
       
