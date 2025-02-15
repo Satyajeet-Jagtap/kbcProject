@@ -168,8 +168,8 @@ function App() {
     setUserName(name);
   };
 
-  const handleWelcomeDetails = (category, subCategory) => {
-    generatePrompt(category, subCategory);
+  const handleWelcomeDetails = (category, subCategory,language) => {
+    generatePrompt(category, subCategory,language);
   };
 
   // ✅ This ensures `prompt` updates before fetching questions
@@ -180,13 +180,14 @@ function App() {
     }
   }, [prompt]); // Runs when `prompt` changes
 
-  const generatePrompt = (category, subCategory) => {
+  const generatePrompt = (category, subCategory, language) => {
     let str = `Generate 15 multiple-choice questions in JSON format. 
       First 5 are easy, next 5 are medium, and last 5 are difficult. 
       consider sample [{"id":1,"question":"sample question","answer":[{"text":"sample option1","correct":true},{"text":"sample option2","correct":false},{"text":"sample option3","correct":false},{"text":"sample option4","correct":false}]}]
       Each question should have an id, a question field, and an answer array with four options,
       each having a text field and a correct field (true/false), and the correct answer should be in a random order.
       keys are id,question,answer,text,correct strictly.
+      Language = ${language}
       Category = ${category} 
       ${subCategory ? `Subcategory = ${subCategory}` : ""} 
       Only return JSON as an array without any extra text.

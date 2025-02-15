@@ -5,11 +5,12 @@ import "./WelcomePage.css";
 import introSound from "../soundClips/introMusic.mp3"; // Your sound file path
 import welcomeVideo from "../assets/videoTrimmed.mp4"; // Your video file path
 
-export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestionsDone }) {
+export default function WelcomePage({ onSubmit, apiCallingDetails, fetchQuestionsDone }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
   const [category, setCategory] = useState(""); // Selected category
   const [subCategory, setSubCategory] = useState("");
+  const [language, setLanguage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showBeginButton, setShowBeginButton] = useState(false); // State for the "Let's Begin" button
@@ -37,7 +38,30 @@ export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestions
     Space_Astronomy: ["Space Exploration", "Astrophysics", "Cosmology"],
     Philosophy: ["Ethics", "Metaphysics", "Political Philosophy"],
     Artificial_Intelligence: ["Machine Learning", "Deep Learning", "AI Ethics"]
-};
+  };
+
+  const indianLanguages = [
+    "Hindi",
+    "Bengali",
+    "Telugu",
+    "Marathi",
+    "Tamil",
+    "Urdu",
+    "Gujarati",
+    "Malayalam",
+    "Kannada",
+    "Odia",
+    "Punjabi",
+    "Assamese",
+    "Maithili",
+    "Santali",
+    "Kashmiri",
+    "Konkani",
+    "Sindhi",
+    "Dogri",
+    "Manipuri",
+    "Bodo"
+  ];
 
   const handleGetStarted = () => {
     setShowPopup(true);
@@ -49,7 +73,7 @@ export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestions
       stop(); // Stop playing the sound once the name is submitted
       setShowPopup(false);
       //call an api after start 
-      apiCallingDetails(category,subCategory);
+      apiCallingDetails(category, subCategory,language);
       setShowVideo(true);
       setShowBeginButton(true); // Show the video after submitting the name
 
@@ -64,7 +88,7 @@ export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestions
   };
 
   const handleBegin = () => {
-    onSubmit(name,age,category,subCategory); // Transition to the next screen
+    onSubmit(name, age, category, subCategory); // Transition to the next screen
   };
 
   const handleCategoryChange = (e) => {
@@ -95,32 +119,45 @@ export default function WelcomePage({ onSubmit, apiCallingDetails,fetchQuestions
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {/* Category Dropdown */}
-      <select
-        required
-        className="welcome-input"
-        value={category}
-        onChange={handleCategoryChange}
-      >
-        <option value="" disabled hidden>Choose a Category</option>
-        {Object.keys(categories).map((cat, index) => (
-          <option key={index} value={cat}>{cat}</option>
-        ))}
-      </select>
 
-      {/* Subcategory Dropdown (Only shows when a category is selected) */}
-      {category && (
-        <select
-          className="welcome-input"
-          value={subCategory}
-          onChange={(e) => setSubCategory(e.target.value)}
-        >
-          <option value="" disabled hidden height="50px">Choose a Subcategory</option>
-          {categories[category].map((subCat, index) => (
-            <option key={index} value={subCat}>{subCat}</option>
-          ))}
-        </select>
-      )}
+            {/* Category Dropdown */}
+            <select
+              required
+              className="welcome-input"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              <option value="" disabled hidden>Choose a Language</option>
+              {indianLanguages.map((lang, index) => (
+                <option key={index} value={lang}>{lang}</option>
+              ))}
+            </select>
+
+            <select
+              required
+              className="welcome-input"
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              <option value="" disabled hidden>Choose a Category</option>
+              {Object.keys(categories).map((cat, index) => (
+                <option key={index} value={cat}>{cat}</option>
+              ))}
+            </select>
+
+            {/* Subcategory Dropdown (Only shows when a category is selected) */}
+            {category && (
+              <select
+                className="welcome-input"
+                value={subCategory}
+                onChange={(e) => setSubCategory(e.target.value)}
+              >
+                <option value="" disabled hidden height="50px">Choose a Subcategory</option>
+                {categories[category].map((subCat, index) => (
+                  <option key={index} value={subCat}>{subCat}</option>
+                ))}
+              </select>
+            )}
 
 
 
