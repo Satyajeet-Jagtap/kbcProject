@@ -41,6 +41,7 @@ export default function WelcomePage({ onSubmit, apiCallingDetails, fetchQuestion
   };
 
   const indianLanguages = [
+    "English",
     "Hindi",
     "Bengali",
     "Telugu",
